@@ -1,0 +1,18 @@
+# Lots of junk goes in here.
+/backups/
+
+# Ignore any file with LOCAL in the name (good for per-machine vars/functions)
+*LOCAL*
+
+# this gets downloaded on a run of dotfiles
+/bash/source/00_git-prompt.sh
+
+# Ignore plugis, but we still track the files via empty .gitignore in dir
+/tmux/plugins/*
+/vim/plugs/*
+/vim/autoload/*
+
+# Vim temp dirs
+temp_dirs/undodir*
+
+tags

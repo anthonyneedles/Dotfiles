@@ -1,0 +1,32 @@
+#!/usr/bin/bash
+
+export DOTFILES=~/.dotfiles
+
+function echo_header() {
+  echo -e "\n\033[1;34m$@\033[0m";
+}
+
+function run_inits() {
+  local files=($DOTFILES/init/*.sh)
+  for file in "${files[@]}"; do
+    source "$file"
+  done
+}
+
+# If this is a first time install we need to clone
+if [[ ! -d $DOTFILES ]]; then
+    echo_header "Pre Init"
+    
+    if [[ ! $(type -P git) ]]; then
+        echo "Installing Git..."
+        sudo apt-get -qq install git >/dev/null && \
+            echo "Git installed"
+    fi
+    
+    echo "Cloning repo from '$GH_USER/dotfiles' into '$DOTFILES'"
+    mkdir -p  "$DOTFILES" && cd "$DOTFILES"
+    git clone -q https://github.com/$GH_USER/dotfiles.git . ||
+        (echo "Problem with cloning. Aborting everything!"; exit 1)
+fi
+
+run_inits

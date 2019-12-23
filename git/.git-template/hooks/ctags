@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+PATH="/usr/local/bin:$PATH"
+gitdir="$(git rev-parse --git-common-dir)"
+trap 'rm -f "${gitdir}/tags.$$"' EXIT INT TERM
+git ls-files|ctags --tag-relative -L - -f${gitdir}/tags.$$ --languages=-javascript,sql
+mv ${gitdir}/tags.$$ ${gitdir}/tags
