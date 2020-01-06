@@ -1,0 +1,65 @@
+#!/usr/bin/env python
+
+"""
+
+Parses the commit message for style guide checks. the checks are found here:
+http://edenswk1-lv2/fsw/sri-cc/coding-style.html#commit-style-guide
+
+"""
+
+import sys
+
+def LineHasError(i, line):
+    """Check a single line of the commit message for syle
+
+    Args:
+      i: the line number of the commit message
+      line: the text of the line
+
+    Returns:
+      Returns 0 if no errors are found
+    """
+    errmsg = ""
+    # the first line is special
+    if (i == 0 and (":" not in line)):
+        errmsg = 'first line of commit message must contain namespace ":"'
+        return (True, i, errmsg)
+
+    # the first line is special
+    if (i == 0 and line[-2] == '.'):
+        errmsg = 'the first line shouldnt end with a period'
+        return (True, i, errmsg)
+
+    # the first line is special
+    if (i == 0 and len(line) > 51):
+        errmsg = 'first line of commit message must be less than 51 characters'
+        return (True, i, errmsg)
+
+    # the second line needs to be empty
+    if (i == 1 and len(line) != 1):
+        errmsg = 'second line in commit message must be empty'
+        return (True, i, errmsg)
+
+    # column width limit
+    if (len(line) > 73):
+        errmsg = 'lines of commit message must be less than 73 characters'
+        return (True, i, errmsg)
+    return (False, 0, errmsg)
+
+
+def main(commit_file):
+    with open(commit_file) as f:
+        for (i, line) in enumerate(f):
+            if (line[0] == '#'):
+                continue
+            (err, num, msg) = LineHasError(i, line)
+            if err:
+                print('### Commit Formatting Error line {0}. ###'.format(num))
+                print('\tNo commit was saved')
+                print(msg)
+                sys.exit(1)
+    sys.exit(0)
+
+
+if __name__ == '__main__':
+    main(sys.argv[1])

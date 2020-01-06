@@ -71,7 +71,7 @@ After all of the initialization scripts are ran the enviroment should be all set
 
 - `/bin` Any executable shell scripts (only `dotfiles` now). Added to PATH.
 
-- `/git` Here resides all things relating with our Git. This include a nice template, global ignore, and a config that ensures they are used.
+- `/git` Here resides all things relating with our Git. This include a nice template, global ignore, and a config that ensures they are used. The template hooks generate ctags after some Git actions, and also ensure that a commit message is properly formatted.
 
 - `/init` Discused above, this holds shell scrips that are executed as a part of the init step.
 
