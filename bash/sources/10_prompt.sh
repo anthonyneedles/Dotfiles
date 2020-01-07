@@ -35,7 +35,7 @@ if [[ ! "${prompt_colors[@]}" ]]; then
     # connected via ssh
     prompt_colors[0]="33"
   fi
-  
+
   if [[ ${EUID} == 0 ]] ; then
       prompt_colors[3]='31'
   fi

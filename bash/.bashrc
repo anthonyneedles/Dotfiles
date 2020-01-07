@@ -1,7 +1,7 @@
 #==============================================================================
 #
 #   .bash_rc from https://github.com/anthonyneedles/dotfiles
-#   
+#
 #   Sources bash configs
 #
 #=============================================================================
@@ -26,4 +26,4 @@ if [ ! -f "$DOTFILES/bash/sources/00_git-prompt.sh" ]; then
     -O $DOTFILES/bash/sources/00_git-prompt.sh
 fi
 
-src 
+src

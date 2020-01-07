@@ -20,7 +20,7 @@ My dotfile repo for holding a bunch of configurations and new Debian/Ubuntu inst
 
 When I first started doing my developing in Linux I used Wes Edens' [dotfiles](https://github.com/wesedens/dotfiles) and [vimrc](https://github.com/wesedens/vimrc) knowing that it made many tools awesome, but without knowing how. So after a few months I finally managed to go line by line and attempt to understand what was happening under the hood. I then picked and choosed the things I found myself using, and added a couple of new things. I also restructured how the `dotfiles` command works. Finally, I arrived with good enough starting point for a git repo of my very own Dotfile initializer, which you are now viewing.
 
-## How to Operate 
+## How to Operate
 
 *Keep in mind this only works with Debain/Ubuntu (tested with Debian 10.2 and Ubuntu 18.04)*
 
@@ -47,7 +47,7 @@ When ran, the `dotfiles` command perfoms a couple of init-inits, to ensure inits
 
 ### 1. Pre-inits
 
-Along with the `DOTFILES` directory variable creation and helper function, anything is absolutely critical to the operation of this command is put in `/bin/dotfiles` before the actual initializer function is called (like cloning the repo if this is a first time install). Once called, this function will source every init script in `/init` **in order** (hence the file numbering).     
+Along with the `DOTFILES` directory variable creation and helper function, anything is absolutely critical to the operation of this command is put in `/bin/dotfiles` before the actual initializer function is called (like cloning the repo if this is a first time install). Once called, this function will source every init script in `/init` **in order** (hence the file numbering).
 
 ### 2. Update/Upgrade/Install Packages
 

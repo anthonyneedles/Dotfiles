@@ -1,8 +1,8 @@
 #==============================================================================
 #
 #   misc.sh from https://github.com/anthonyneedles/dotfiles
-#   
-#   Set various bash options 
+#
+#   Set various bash options
 #
 #=============================================================================
 
@@ -26,7 +26,7 @@ alias ls="ls --color"				  # colors for our ls-ing
 alias la='ls -Al' 				    # list hidden files
 alias ll="ls -Al --group-directories-first" 	# neatly list hidden files
 alias lr='ls -lR' 				    # recursive list
-alias lx='ls -lXB' 				    # sort by extension 
+alias lx='ls -lXB' 				    # sort by extension
 
 # }}}1
 # Section: Git {{{1
@@ -45,4 +45,4 @@ alias install="sudo apt-get install"
 alias remove="sudo apt-get remove"
 alias search="apt-cache search"
 
-# }}}1 
+# }}}1

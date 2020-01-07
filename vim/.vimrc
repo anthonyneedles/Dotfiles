@@ -1,7 +1,7 @@
-"==============================================================================
+"=============================================================================
 "
 "   .vimrc from https://github.com/anthonyneedles/dotfiles
-"   
+"
 "   heavily borrowed from https://github.com/wesedens/vimrc
 "
 "=============================================================================
@@ -21,7 +21,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/seoul256.vim'
-Plug 'tpope/vim-surround' 
+Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-commentary'
 Plug 'dense-analysis/ale'
@@ -87,10 +87,10 @@ set textwidth=500              " Max width of inserted text
 set timeoutlen=1200            " A little bit more time for macros
 set ttimeoutlen=80             " Make Esc work faster
 set tags=./tags                " Where ctags generated tags
-set undodir=$DOTFILE/vim/temp_dirs/undodir
+set undodir=$DOTFILES/vim/temp_dirs/undodir
 set undofile                   " Turn persistent undo on
 set undolevels=1000            " Lots of history
-set undoreload=10000            " Lots of history
+set undoreload=10000           " Lots of history
 set viminfo=!,'20,<50,s10,h    " Remember info conservatively
 set virtualedit=block          " Highlight any space in visual block mode
 set wildmenu                   " Turn on the WiLd menu
@@ -257,8 +257,8 @@ map <leader>ba :bufdo bd<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>tm :tabmove
+map <leader>t<leader> :tabnext
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -386,8 +386,8 @@ if has("autocmd")
     autocmd FileType gitcommit if getline(1)[0] ==# '#' | call s:scratch_maps() | endif
     autocmd FileType git,gitcommit setlocal foldmethod=syntax foldlevel=1
     autocmd FileType gitrebase nnoremap <buffer> S :Cycle<CR>
-    
-    autocmd BufRead,BufNewFile *.yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 
+
+    autocmd BufRead,BufNewFile *.yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
     autocmd FileType netrw call s:scratch_maps()
     autocmd FocusLost   * silent! wall

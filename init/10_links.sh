@@ -1,7 +1,7 @@
 #==============================================================================
 #
 #   10_links.sh from https://github.com/anthonyneedles/dotfiles
-#   
+#
 #   Make symbolic links from ~ to our dotfiles folder
 #
 #=============================================================================
@@ -34,4 +34,4 @@ linkem () {
 }
 
 echo_header "Adding Links"
-linkem 
+linkem

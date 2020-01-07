@@ -13,6 +13,6 @@
 /vim/autoload/*
 
 # Vim temp dirs
-temp_dirs/undodir*
+/vim/temp_dirs/undodir*
 
 tags
