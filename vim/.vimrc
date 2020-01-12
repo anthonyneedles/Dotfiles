@@ -8,12 +8,12 @@
 
 " Section: Load Plugs  {{{1
 " ---------------------
-set runtimepath+=$DOTFILES/vim
 
+set runtimepath+=$DOTFILES/vim
 call plug#begin("$DOTFILES/vim/plugs")
 
 " Always loaded
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive', {'tag': 'v2.5'}
 Plug 'jlanzarotta/bufexplorer'
 Plug 'terryma/vim-expand-region'
 Plug 'vim-syntastic/syntastic'
@@ -103,6 +103,10 @@ set wrap                       " word wrap lines
 
 let g:is_bash=1
 
+" => vim-fugitive
+map <leader>gs :Gstatus<cr>
+map <leader>gd :Gvdiff<cr>
+
 " => bufExplorer plugin
 let g:bufExploerDefaultHelp=0
 let g:bufExplorerDisableDefaultKeyMapping=1
@@ -132,10 +136,10 @@ map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
 
 " => vim-airline config (force color)
-" let g:airline_theme="base16_gruvbox_dark_hard"
+let g:airline_theme="base16_gruvbox_dark_hard"
 let g:airline#extensions#tabline#enabled = 1
 " use this one with seoul256
-let g:airline_theme="minimalist"
+" let g:airline_theme="minimalist"
 
 " => gruvbox colorscheme
 let g:gruvbox_contrast_dark='medium'
@@ -147,11 +151,13 @@ let g:seoul256_background=234
 let g:ale_linters = {
 \   'c': ['clangtidy'],
 \   'cpp': ['clangtidy'],
+\   'asm': [''],
 \}
 
 let g:ale_lint_on_text_changed = 1
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
+let g:ale_c_parse_compile_commands  = 1
 
 " }}}1
 " Section: Commands {{{1
@@ -201,8 +207,6 @@ endfunction
 " }}}1
 " Section: Mappings {{{1
 " ----------------------
-" Mappings {{{2
-" --------------------
 
 " Y should perform like C/D
 nnoremap Y  y$
@@ -329,45 +333,7 @@ nnoremap <leader><Left> ^i
 
 " highlight the 80th color column
 nnoremap <silent> <leader>hh :call g:ToggleColorColumn()<CR>
-" }}}2
-" Old Mapping (unused) {{{2
-"inoremap <C-C> <Esc>`^
-"
-"vnoremap     <M-<> <gv
-"vnoremap     <M->> >gv
-"vnoremap     <Space> I<Space><Esc>gv
-"
-"inoremap <C-X>^ <C-R>=substitute(&commentstring,' \=%s\>'," -*- ".&ft." -*- vim:set ft=".&ft." ".(&et?"et":"noet")." sw=".&sw." sts=".&sts.':','')<CR>
-"
-"cnoremap <C-O>      <Up>
-"inoremap <M-o>      <C-O>o
-"inoremap <M-O>      <C-O>O
-"inoremap <M-i>      <Left>
-"inoremap <M-I>      <C-O>^
-"inoremap <M-A>      <C-O>$
-"noremap! <C-J>      <Down>
-"noremap! <C-K><C-K> <Up>
-"if has("eval")
-"  command! -buffer -bar -range -nargs=? Slide :exe 'norm m`'|exe '<line1>,<line2>move'.((<q-args> < 0 ? <line1>-1 : <line2>)+(<q-args>=='' ? 1 : <q-args>))|exe 'norm ``'
-"endif
-"
-map  <F1>   <Esc>
-map! <F1>   <Esc>
-nmap <silent> <F6> :if &previewwindow<Bar>pclose<Bar>elseif exists(':Gstatus')<Bar>exe 'Gstatus'<Bar>else<Bar>ls<Bar>endif<CR>
-"nmap <silent> <F7> :if exists(':Lcd')<Bar>exe 'Lcd'<Bar>elseif exists(':Cd')<Bar>exe 'Cd'<Bar>else<Bar>lcd %:h<Bar>endif<CR>
-map <F8>    :Make<CR>
-map <F9>    :Dispatch<CR>
-map <F10>   :Start<CR>
-"
-"noremap  <S-Insert> <MiddleMouse>
-"noremap! <S-Insert> <MiddleMouse>
-"
-"imap <C-L>          <Plug>CapsLockToggle
-"Imap <C-G>c         <Plug>CapsLockToggle
-"Map <Leader>v  :so ~/.vimrc<CR>
-"
-"Inoremap <silent> <C-G><C-T> <C-R>=repeat(complete(col('.'),map(["%Y-%m-%d %H:%M:%S","%a, %d %b %Y %H:%M:%S %z","%Y %b %d","%d-%b-%y","%a %b %d %T %Z %Y"],'strftime(v:val)')+[localtime()]),0)<CR>
-" }}}2
+
 " }}}1
 " Section: Autocommands {{{1
 " --------------------------
@@ -383,7 +349,7 @@ if has("autocmd")
     """"""""""""""""""""""""""""""
     autocmd FileType gitcommit set tw=72 | setlocal spell
     autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
-    autocmd FileType gitcommit if getline(1)[0] ==# '#' | call s:scratch_maps() | endif
+    "autocmd FileType gitcommit if getline(1)[0] ==# '#' | call s:scratch_maps() | endif
     autocmd FileType git,gitcommit setlocal foldmethod=syntax foldlevel=1
     autocmd FileType gitrebase nnoremap <buffer> S :Cycle<CR>
 
@@ -466,6 +432,7 @@ endif
 
 set t_Co=256
 set background=dark
-silent! colorscheme seoul256
+silent! colorscheme gruvbox
+"silent! colorscheme seoul256
 highlight Comment cterm=italic gui=italic
 " }}}1
