@@ -16,7 +16,7 @@ call plug#begin("$DOTFILES/vim/plugs")
 Plug 'tpope/vim-fugitive', {'tag': 'v2.5'}
 Plug 'jlanzarotta/bufexplorer'
 Plug 'terryma/vim-expand-region'
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
@@ -149,15 +149,22 @@ let g:seoul256_background=234
 
 " => ale
 let g:ale_linters = {
-\   'c': ['clangtidy'],
-\   'cpp': ['clangtidy'],
+\   'c': ['gcc'],
+\   'cpp': ['gcc'],
 \   'asm': [''],
 \}
 
+let g:ale_fixers = {
+\   'c': ['remove_trailing_lines', 'trim_whitespace'],
+\   'cpp': ['remove_trailing_lines', 'trim_whitespace'],
+\   'asm': ['remove_trailing_lines', 'trim_whitespace'],
+\}
+
+let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 1
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
-let g:ale_c_parse_compile_commands  = 1
+let g:ale_c_parse_compile_commands = 1
 
 " }}}1
 " Section: Commands {{{1
@@ -216,7 +223,7 @@ nnoremap <Leader>w :w<CR>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+" command W w !sudo tee % > /dev/null
 
 " Copy and paste to system clipboard
 vmap <Leader>y  "0y

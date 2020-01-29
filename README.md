@@ -51,7 +51,7 @@ Along with the `DOTFILES` directory variable creation and helper function, anyth
 
 ### 2. Update/Upgrade/Install Packages
 
-In `/init/00_deb-packages.sh`, we update APT's. Then, each package specified in the array will be updated/upgraded if necessary. Simple enough. Keep in mind that this occurs first due to the file name numbering system.
+In `/init/00_deb-packages.sh`, we update APT's. Then, each package specified in the array will be updated/upgraded if necessary. Simple enough. Keep in mind that this occurs first due to the file name numbering system. This is only ran if the your OS was detected to be Debian-based.
 
 ### 3. Make Links
 

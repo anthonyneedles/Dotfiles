@@ -1,10 +1,13 @@
 #==============================================================================
 #
-#   00_deb-packages.sh from https://github.com/anthonyneedles/dotfiles
+#   00_apt-packages.sh from https://github.com/anthonyneedles/dotfiles
 #
 #   Update and install Aptitude packages
 #
 #=============================================================================
+
+# Only for Debian systems
+is_debian || return 1
 
 echo_header "Updating APT"
 sudo apt-get -qq update && echo "APT updated"

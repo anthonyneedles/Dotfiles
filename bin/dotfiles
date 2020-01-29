@@ -6,6 +6,15 @@ function echo_header() {
   echo -e "\n\033[1;34m$@\033[0m";
 }
 
+function is_debian() {
+  # Abort if not debian based
+  OS="$(cat /etc/*release 2> /dev/null)"
+
+  [[ "${OS}" =~ Ubuntu ]] || \
+  [[ "${OS}" =~ Mint   ]] || \
+  [[ "${OS}" =~ Debian ]] || return 1
+}
+
 function run_inits() {
   local files=($DOTFILES/init/*.sh)
   for file in "${files[@]}"; do
@@ -16,12 +25,6 @@ function run_inits() {
 # If this is a first time install we need to clone
 if [[ ! -d $DOTFILES ]]; then
     echo_header "Pre Init"
-
-    if [[ ! $(type -P git) ]]; then
-        echo "Installing Git..."
-        sudo apt-get -qq install git >/dev/null && \
-            echo "Git installed"
-    fi
 
     echo "Cloning repo from '$GH_USER/dotfiles' into '$DOTFILES'"
     mkdir -p  "$DOTFILES" && cd "$DOTFILES"
