@@ -255,6 +255,11 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
+" Split windows like  my tmux
+map <leader>\ <C-W>v
+map <leader>- <C-W>s
+map <leader>x <C-W>c
+
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -340,6 +345,9 @@ nnoremap <leader><Left> ^i
 
 " highlight the 80th color column
 nnoremap <silent> <leader>hh :call g:ToggleColorColumn()<CR>
+
+" checking trailing spaces and tabs
+nnoremap <F3> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
 
 " }}}1
 " Section: Autocommands {{{1
