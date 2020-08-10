@@ -13,18 +13,19 @@ set runtimepath+=$DOTFILES/vim
 call plug#begin("$DOTFILES/vim/plugs")
 
 " Always loaded
-Plug 'tpope/vim-fugitive', {'tag': 'v2.5'}
+Plug 'tpope/vim-fugitive', { 'tag': 'v2.5' }
 Plug 'jlanzarotta/bufexplorer'
 Plug 'terryma/vim-expand-region'
 "Plug 'vim-syntastic/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-commentary'
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 
 " Only loaded when used (lazy)
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -64,6 +65,7 @@ set linebreak                  " Linebreak on 500 characters
 set nolist                     " whitespace characters are _not_ made visible
 set magic                      " For regular expressions turn magic on
 set mat=2                      " How many tenths of a second to blink when matching brackets
+set nu                         " Show line numbers
 set nobackup                   " Turn backup off, since most stuff is in SVN, git etc anyway...
 set noerrorbells               " No bells for error messages
 set noswapfile                 " Do not create a swapfile for a new buffer
@@ -136,8 +138,9 @@ map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
 
 " => vim-airline config (force color)
-let g:airline_theme="base16_gruvbox_dark_hard"
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme="dracula"
+" let g:airline_theme="base16_gruvbox_dark_hard"
 " use this one with seoul256
 " let g:airline_theme="minimalist"
 
@@ -447,7 +450,10 @@ endif
 
 set t_Co=256
 set background=dark
-silent! colorscheme gruvbox
+set termguicolors
+silent! colorscheme dracula
+"silent! colorscheme gruvbox
 "silent! colorscheme seoul256
 highlight Comment cterm=italic gui=italic
+highlight Normal ctermbg=NONE
 " }}}1
