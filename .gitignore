@@ -8,7 +8,6 @@
 /bash/source/00_git-prompt.sh
 
 # Ignore plugis, but we still track the files via empty .gitignore in dir
-/tmux/plugins/*
 /vim/plugs/*
 /vim/autoload/*
 

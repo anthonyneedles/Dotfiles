@@ -450,10 +450,8 @@ endif
 
 set t_Co=256
 set background=dark
-set termguicolors
 silent! colorscheme dracula
 "silent! colorscheme gruvbox
 "silent! colorscheme seoul256
-highlight Comment cterm=italic gui=italic
 highlight Normal ctermbg=NONE
 " }}}1

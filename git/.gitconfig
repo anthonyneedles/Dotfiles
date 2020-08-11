@@ -56,6 +56,6 @@
 [url "git://github.com/"]
   insteadOf = "github:"
 [push]
-  default = simple
+  default = matching
 [init]
   templatedir = ~/.git-template
