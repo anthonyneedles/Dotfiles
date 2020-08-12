@@ -1,6 +1,6 @@
 #==============================================================================
 #
-#   00_apt-packages.sh from https://github.com/anthonyneedles/dotfiles
+#   10_apt-packages.sh from https://github.com/anthonyneedles/dotfiles
 #
 #   Update and install Aptitude packages
 #

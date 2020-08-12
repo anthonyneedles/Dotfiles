@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+#==============================================================================
+#
+#   dotfiles from https://github.com/anthonyneedles/dotfiles
+#
+#   Run dotfiles intialization routine
+#
+#=============================================================================
 
 export DOTFILES=~/.dotfiles
 
@@ -14,6 +21,9 @@ function is_debian() {
   [[ "${OS}" =~ Mint   ]] || \
   [[ "${OS}" =~ Debian ]] || return 1
 }
+
+# If this file was being sourced, exit now.
+[[ "$1" == "source" ]] && return
 
 function run_inits() {
   local files=($DOTFILES/init/*.sh)
