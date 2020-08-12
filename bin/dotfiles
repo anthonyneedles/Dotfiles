@@ -33,3 +33,5 @@ if [[ ! -d $DOTFILES ]]; then
 fi
 
 run_inits
+
+echo_header "dotfiles completed"
