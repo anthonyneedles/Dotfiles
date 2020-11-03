@@ -12,6 +12,11 @@ echo_header "Initializing Applications"
 git config --global core.excludesfile ~/.gitignore_global && \
     echo "Added Git global ignore"
 
+# git tab-completion 
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
 # install TPM and all TPM plugins defined in .tmux.conf
 echo "Installing Tmux Plugin Manager and plugins..."
 if [[ ! -d $DOTFILES/tmux/plugins/tpm ]]; then

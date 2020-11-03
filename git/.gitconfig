@@ -59,3 +59,5 @@
   default = simple
 [init]
   templatedir = ~/.git-template
+[credential]
+	helper = store

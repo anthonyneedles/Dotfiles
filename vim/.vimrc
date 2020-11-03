@@ -179,7 +179,7 @@ function! g:ToggleColorColumn()
         if &colorcolumn != ''
             setlocal colorcolumn&
         else
-            setlocal colorcolumn=80
+            setlocal colorcolumn=100
         endif
         highlight ColorColumn ctermbg=23 guibg=lightblue
     endif
@@ -191,7 +191,11 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.py  :call DeleteTrailingWS()
+autocmd BufWrite *.c   :call DeleteTrailingWS()
+autocmd BufWrite *.cpp :call DeleteTrailingWS()
+autocmd BufWrite *.h   :call DeleteTrailingWS()
+autocmd BufWrite *.hpp :call DeleteTrailingWS()
 
 function! VisualSelection(direction, extra_filter) range
   let l:saved_reg = @"
