@@ -20,7 +20,7 @@ shopt -s nocaseglob				    # case-insensitive pathname expansion
 # Section: Files {{{1
 
 # Source our .dircolors for ls colors
-eval $( dircolors -b $DOTFILES/bash/.dircolors )
+#eval $( dircolors -b $DOTFILES/bash/.dircolors )
 
 alias ls="ls --color"				  # colors for our ls-ing
 alias la='ls -Al' 				    # list hidden files
